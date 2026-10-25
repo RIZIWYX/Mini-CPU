@@ -30,20 +30,15 @@ portes logiques
 | Dossier | Contenu |
 |---|---|
 | `circuits/` | Le processeur (`rg8.circ`) |
-| `docs/` | Roadmap, jeu d'instructions, tests, unité de commande |
+| `docs/` | Architecture, roadmap, jeu d'instructions |
 | `assembleur/` | Assembleur Python (à venir) |
 | `programs/` | Programmes d'exemple (à venir) |
-| `tp/` | Circuits d'origine des TP, conservés tels quels |
 
 ## Lancer le projet
 
 1. Installer Logisim-evolution (version 3.8 ou supérieure).
 2. Ouvrir `circuits/rg8.circ`.
 3. Lancer la simulation avec `Simulation > Tics activés`.
-
-## Origine du projet
-
-Ce projet est parti des TP de logique combinatoire et séquentielle de L1 informatique à l'Université de Rouen Normandie (additionneurs, UAL, registres, séquenceurs, architecture). Les circuits d'origine sont conservés dans `tp/`. Le processeur complet, son jeu d'instructions, son unité de commande et l'assembleur sont un travail personnel.
 
 ## Auteur
 
