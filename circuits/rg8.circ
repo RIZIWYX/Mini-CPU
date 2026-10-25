@@ -3024,6 +3024,10 @@
       <a name="appearance" val="NewPins"/>
       <a name="label" val="d"/>
     </comp>
+    <comp lib="0" loc="(200,280)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="raz"/>
+    </comp>
     <comp lib="0" loc="(750,150)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -3043,6 +3047,11 @@
     <wire from="(190,120)" to="(210,120)"/>
     <wire from="(190,220)" to="(340,220)"/>
     <wire from="(200,100)" to="(240,100)"/>
+    <wire from="(200,280)" to="(210,280)"/>
+    <wire from="(210,140)" to="(210,250)"/>
+    <wire from="(210,140)" to="(240,140)"/>
+    <wire from="(210,250)" to="(210,280)"/>
+    <wire from="(210,250)" to="(410,250)"/>
     <wire from="(340,220)" to="(340,230)"/>
     <wire from="(340,230)" to="(410,230)"/>
     <wire from="(370,160)" to="(370,210)"/>
