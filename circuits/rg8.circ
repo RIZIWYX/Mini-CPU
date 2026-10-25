@@ -2144,24 +2144,26 @@
     <comp lib="1" loc="(800,270)" name="AND Gate">
       <a name="inputs" val="3"/>
     </comp>
-    <comp lib="5" loc="(510,240)" name="D Flip-Flop">
-      <a name="appearance" val="logisim_evolution"/>
-    </comp>
-    <wire from="(300,250)" to="(500,250)"/>
+    <comp loc="(660,140)" name="bascule_d"/>
+    <wire from="(300,250)" to="(410,250)"/>
     <wire from="(300,320)" to="(370,320)"/>
     <wire from="(300,400)" to="(600,400)"/>
     <wire from="(300,440)" to="(350,440)"/>
     <wire from="(350,360)" to="(350,440)"/>
     <wire from="(350,360)" to="(370,360)"/>
     <wire from="(350,440)" to="(640,440)"/>
+    <wire from="(410,140)" to="(410,250)"/>
+    <wire from="(410,140)" to="(440,140)"/>
     <wire from="(420,340)" to="(430,340)"/>
-    <wire from="(430,290)" to="(430,340)"/>
-    <wire from="(430,290)" to="(500,290)"/>
-    <wire from="(560,250)" to="(750,250)"/>
+    <wire from="(430,160)" to="(430,340)"/>
+    <wire from="(430,160)" to="(440,160)"/>
     <wire from="(600,270)" to="(600,400)"/>
     <wire from="(600,270)" to="(750,270)"/>
     <wire from="(640,290)" to="(640,440)"/>
     <wire from="(640,290)" to="(750,290)"/>
+    <wire from="(660,140)" to="(680,140)"/>
+    <wire from="(680,140)" to="(680,250)"/>
+    <wire from="(680,250)" to="(750,250)"/>
     <wire from="(800,270)" to="(920,270)"/>
   </circuit>
   <circuit name="reg4">
