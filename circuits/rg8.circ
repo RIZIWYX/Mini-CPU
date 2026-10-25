@@ -2989,4 +2989,49 @@
     <wire from="(710,100)" to="(710,190)"/>
     <wire from="(710,100)" to="(770,100)"/>
   </circuit>
+  <circuit name="bascule_d">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="bascule_d"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(190,220)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="clk"/>
+    </comp>
+    <comp lib="0" loc="(200,100)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d"/>
+    </comp>
+    <comp lib="0" loc="(750,150)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="q"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(750,240)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="Qb"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="1" loc="(240,120)" name="NOT Gate"/>
+    <comp loc="(460,100)" name="verrou_d"/>
+    <comp loc="(630,210)" name="verrou_d"/>
+    <wire from="(190,120)" to="(190,220)"/>
+    <wire from="(190,120)" to="(210,120)"/>
+    <wire from="(190,220)" to="(340,220)"/>
+    <wire from="(200,100)" to="(240,100)"/>
+    <wire from="(340,220)" to="(340,230)"/>
+    <wire from="(340,230)" to="(410,230)"/>
+    <wire from="(370,160)" to="(370,210)"/>
+    <wire from="(370,160)" to="(500,160)"/>
+    <wire from="(370,210)" to="(410,210)"/>
+    <wire from="(460,100)" to="(500,100)"/>
+    <wire from="(500,100)" to="(500,160)"/>
+    <wire from="(630,150)" to="(630,210)"/>
+    <wire from="(630,150)" to="(750,150)"/>
+    <wire from="(630,230)" to="(740,230)"/>
+    <wire from="(740,230)" to="(740,240)"/>
+    <wire from="(740,240)" to="(750,240)"/>
+  </circuit>
 </project>
