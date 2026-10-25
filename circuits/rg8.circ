@@ -98,4 +98,51 @@
     <wire from="(380,180)" to="(450,180)"/>
     <wire from="(380,270)" to="(450,270)"/>
   </circuit>
+  <circuit name="add_full">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="add_full"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(100,240)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="b"/>
+    </comp>
+    <comp lib="0" loc="(1050,270)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(1050,380)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="cout"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(110,140)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="a"/>
+    </comp>
+    <comp lib="0" loc="(540,290)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="cin"/>
+    </comp>
+    <comp lib="1" loc="(890,380)" name="OR Gate"/>
+    <comp loc="(450,180)" name="demi_add"/>
+    <comp loc="(780,270)" name="demi_add"/>
+    <wire from="(100,240)" to="(230,240)"/>
+    <wire from="(110,140)" to="(230,140)"/>
+    <wire from="(230,140)" to="(230,180)"/>
+    <wire from="(230,200)" to="(230,240)"/>
+    <wire from="(450,180)" to="(560,180)"/>
+    <wire from="(450,200)" to="(450,400)"/>
+    <wire from="(450,400)" to="(840,400)"/>
+    <wire from="(540,290)" to="(560,290)"/>
+    <wire from="(560,180)" to="(560,270)"/>
+    <wire from="(780,270)" to="(1050,270)"/>
+    <wire from="(780,290)" to="(800,290)"/>
+    <wire from="(800,290)" to="(800,360)"/>
+    <wire from="(800,360)" to="(840,360)"/>
+    <wire from="(890,380)" to="(1050,380)"/>
+  </circuit>
 </project>
