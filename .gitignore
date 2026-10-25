@@ -1,0 +1,18 @@
+# Sujets de TP (documents de l'université)
+*.pdf
+
+# Fichiers temporaires et sauvegardes de Logisim
+*.circ.bak
+*~
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Système
+.DS_Store
+Thumbs.db
+_a_supprimer/
