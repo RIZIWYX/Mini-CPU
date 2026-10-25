@@ -2118,6 +2118,7 @@
     <a name="circuit" val="reg1"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(170,200)" name="Ground"/>
     <comp lib="0" loc="(300,250)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="E"/>
@@ -2134,6 +2135,10 @@
       <a name="appearance" val="NewPins"/>
       <a name="label" val="EN"/>
     </comp>
+    <comp lib="0" loc="(350,180)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="raz"/>
+    </comp>
     <comp lib="0" loc="(920,270)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -2145,10 +2150,12 @@
       <a name="inputs" val="3"/>
     </comp>
     <comp loc="(660,140)" name="bascule_d"/>
+    <wire from="(170,200)" to="(440,200)"/>
     <wire from="(300,250)" to="(410,250)"/>
     <wire from="(300,320)" to="(370,320)"/>
     <wire from="(300,400)" to="(600,400)"/>
     <wire from="(300,440)" to="(350,440)"/>
+    <wire from="(350,180)" to="(440,180)"/>
     <wire from="(350,360)" to="(350,440)"/>
     <wire from="(350,360)" to="(370,360)"/>
     <wire from="(350,440)" to="(640,440)"/>
@@ -2246,8 +2253,10 @@
     <wire from="(300,970)" to="(320,970)"/>
     <wire from="(310,1320)" to="(320,1320)"/>
     <wire from="(310,200)" to="(320,200)"/>
-    <wire from="(310,720)" to="(310,1320)"/>
-    <wire from="(320,990)" to="(320,1320)"/>
+    <wire from="(310,720)" to="(310,740)"/>
+    <wire from="(310,740)" to="(310,1320)"/>
+    <wire from="(320,1010)" to="(320,1320)"/>
+    <wire from="(320,990)" to="(320,1010)"/>
     <wire from="(530,140)" to="(720,140)"/>
     <wire from="(530,410)" to="(710,410)"/>
     <wire from="(530,660)" to="(720,660)"/>
@@ -3046,6 +3055,10 @@
       <a name="appearance" val="NewPins"/>
       <a name="label" val="raz"/>
     </comp>
+    <comp lib="0" loc="(220,320)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="s"/>
+    </comp>
     <comp lib="0" loc="(750,150)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -3070,6 +3083,10 @@
     <wire from="(210,140)" to="(240,140)"/>
     <wire from="(210,250)" to="(210,280)"/>
     <wire from="(210,250)" to="(410,250)"/>
+    <wire from="(220,320)" to="(240,320)"/>
+    <wire from="(240,160)" to="(240,270)"/>
+    <wire from="(240,270)" to="(240,320)"/>
+    <wire from="(240,270)" to="(410,270)"/>
     <wire from="(340,220)" to="(340,230)"/>
     <wire from="(340,230)" to="(410,230)"/>
     <wire from="(370,160)" to="(370,210)"/>
