@@ -7,7 +7,7 @@ Utilisation :
 import re
 import sys
 
-# Table des instructions : nom -> opcode (les 4 bits de gauche)
+# nom -> opcode
 OPCODES = {
     "NOP": 0x0, "LDA": 0x1, "LDI": 0x2, "STA": 0x3,
     "ADD": 0x4, "SUB": 0x5, "AND": 0x6, "OR":  0x7,
@@ -15,7 +15,6 @@ OPCODES = {
     "JN":  0xC, "OUT": 0xE, "HLT": 0xF,
 }
 
-# Instructions qui n'ont pas d'opérande
 SANS_OPERANDE = {"NOP", "NOT", "OUT", "HLT"}
 
 TAILLE_ROM = 16
@@ -29,13 +28,10 @@ class ErreurAssemblage(Exception):
 
 
 def nettoyer(texte):
-    """Découpe le texte en lignes utiles.
-
-    Renvoie une liste de (numéro de ligne, étiquette ou None, instruction ou '').
-    """
+    """Renvoie la liste des (numéro, étiquette, instruction) utiles."""
     lignes = []
     for numero, ligne in enumerate(texte.splitlines(), start=1):
-        ligne = ligne.split(";")[0].strip()   # enlève commentaire et espaces
+        ligne = ligne.split(";")[0].strip()
         if ligne == "":
             continue
 
@@ -84,7 +80,7 @@ def assembler_instruction(numero, instruction, etiquettes):
     morceaux = instruction.split()
     nom = morceaux[0].upper()
 
-    # directive .byte : met une valeur brute (0 à 255) dans la ROM
+    # .byte : valeur brute
     if nom == ".BYTE":
         if len(morceaux) != 2:
             raise ErreurAssemblage(numero, ".byte attend une seule valeur")
@@ -124,7 +120,7 @@ def assembler_texte(texte):
             raise ErreurAssemblage(numero, f"programme trop long (maximum {TAILLE_ROM} instructions)")
         octets.append(assembler_instruction(numero, instruction, etiquettes))
 
-    octets += [0] * (TAILLE_ROM - len(octets))   # complète avec des NOP
+    octets += [0] * (TAILLE_ROM - len(octets))
     return octets
 
 
@@ -139,7 +135,6 @@ def ecrire_rom(chemin_circ, octets):
     fin = texte.find("</circuit>", debut)
     rom = texte[debut:fin]
 
-    # chaque constante : <comp ... loc="(x,y)" name="Constant"> ... </comp>  ou  <comp .../>
     motif = re.compile(
         r'<comp lib="0" loc="\((\d+),(\d+)\)" name="Constant"\s*/>'
         r'|<comp lib="0" loc="\((\d+),(\d+)\)" name="Constant">.*?</comp>',
@@ -149,7 +144,7 @@ def ecrire_rom(chemin_circ, octets):
     if len(constantes) != TAILLE_ROM:
         raise ValueError(f"{len(constantes)} constantes trouvées dans rom16x8 au lieu de {TAILLE_ROM}")
 
-    # l'adresse 0 est la constante du haut : on trie par y
+    # adresse 0 = constante du haut
     def position(m):
         x = int(m.group(1) or m.group(3))
         y = int(m.group(2) or m.group(4))

@@ -14,8 +14,6 @@ def octets(texte):
     return assembler_texte(texte)
 
 
-# ---------- traduction ----------
-
 def test_une_instruction():
     assert octets("ADD 13")[0] == 0x4D
 
@@ -49,8 +47,6 @@ def test_directive_byte():
     assert octets(".byte 0xAB")[0] == 0xAB
 
 
-# ---------- étiquettes ----------
-
 def test_etiquette_en_arriere():
     assert octets("boucle: NOP\nJMP boucle")[:2] == [0x00, 0x90]
 
@@ -68,8 +64,6 @@ def test_programme_multiplication():
         assert octets(f.read()) == [0x20, 0x3D, 0x27, 0x3E, 0x21, 0x3F, 0x26, 0x4D,
                                     0x3D, 0x1E, 0x5F, 0x3E, 0xAE, 0x96, 0x1D, 0xE0]
 
-
-# ---------- erreurs ----------
 
 @pytest.mark.parametrize("texte, message", [
     ("FOO 3", "ligne 1 : instruction inconnue 'FOO'"),
@@ -89,8 +83,6 @@ def test_erreurs(texte, message):
         octets(texte)
     assert str(erreur.value) == message
 
-
-# ---------- écriture dans le .circ ----------
 
 def test_ecrire_rom(tmp_path):
     copie = tmp_path / "rg8.circ"

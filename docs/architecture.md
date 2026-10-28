@@ -99,7 +99,7 @@ Une flèche `A --> B` signifie : **B est construit avec A**.
 |---|---|---|
 | `seg7_dec` | NOT, AND, OR | Chiffre décimal → afficheur 7 segments |
 | `seg7_hex` | NOT, AND, OR | Chiffre hexadécimal → afficheur 7 segments |
-| `byte_to_bcd` | ⚠️ diviseur Logisim | Octet → centaines, dizaines, unités (à refaire en portes) |
+| `byte_to_bcd` | diviseur Logisim | Octet → centaines, dizaines, unités (à refaire en portes) |
 
 ### Anciens circuits
 
