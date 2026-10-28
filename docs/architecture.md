@@ -1,6 +1,6 @@
 # Architecture des circuits
 
-Tous les circuits sont dans `circuits/rg8.circ`. Ils sont rangés **du plus simple au plus complexe**, par famille. Chaque circuit n'utilise que des portes logiques et des circuits placés au-dessus de lui dans la liste.
+Tous les circuits sont dans `circuits/rg8.circ`. Chaque circuit n'utilise que des portes logiques et des circuits plus simples, testés avant d'être réutilisés.
 
 ## Qui utilise qui
 
@@ -12,24 +12,32 @@ graph BT
   subgraph Sélection
     dec2_4 --> dec4_16
     dec2_4 --> mux4 --> mux4_8 --> mux16_8
+    mux2 --> mux2_4
   end
-  subgraph Mémoire
-    verrou_d --> bascule_d --> reg1 --> reg4 --> reg8 --> ram16x8
-  end
-  subgraph Compteur
-    cpt3_logique --> cpt3_load
-  end
-  subgraph Affichage
-    seg7_dec
-    seg7_hex
-    byte_to_bcd
+  subgraph Mémorisation
+    verrou_d --> bascule_d --> reg1 --> reg4 --> reg8
   end
 
   addsub8 --> ual8
   mux4_8 --> ual8
+  reg8 --> ram16x8
   dec4_16 --> ram16x8
   mux16_8 --> ram16x8
-  bascule_d --> cpt3_load
+  mux16_8 --> rom16x8
+  reg4 --> pc4
+  add4 --> pc4
+  mux2_4 --> pc4
+  bascule_d --> etapes
+  dec4_16 --> commande
+
+  ual8 --> main
+  ram16x8 --> main
+  rom16x8 --> main
+  pc4 --> main
+  etapes --> main
+  commande --> main
+  reg8 --> main
+  mux4_8 --> main
 ```
 
 Une flèche `A --> B` signifie : **B est construit avec A**.
@@ -52,6 +60,8 @@ Une flèche `A --> B` signifie : **B est construit avec A**.
 |---|---|---|
 | `dec2_4` | NOT, AND | Adresse 2 bits → 1 sortie active parmi 4 |
 | `dec4_16` | 2 × `dec2_4`, 16 × AND | Adresse 4 bits → 1 sortie active parmi 16 |
+| `mux2` | NOT, AND, OR | Choisit 1 bit parmi 2 |
+| `mux2_4` | 4 × `mux2` | Choisit 1 valeur de 4 bits parmi 2 |
 | `mux4` | `dec2_4`, AND, OR | Choisit 1 bit parmi 4 |
 | `mux4_8` | 8 × `mux4` | Choisit 1 valeur de 8 bits parmi 4 |
 | `mux16_8` | 5 × `mux4_8` | Choisit 1 valeur de 8 bits parmi 16 |
@@ -62,25 +72,28 @@ Une flèche `A --> B` signifie : **B est construit avec A**.
 |---|---|---|
 | `ual8` | `addsub8`, `mux4_8`, AND, OR, NOT, NOR, XOR | UAL 8 bits : ADD, SUB, AND, OR, NOT, drapeaux Z, N, C, V |
 
-### Mémoire
+### Mémorisation
 
 | Circuit | Construit avec | Rôle |
 |---|---|---|
-| `verrou_d` | NAND, NOT | Mémorise 1 bit tant que `en` = 1 |
-| `bascule_d` | 2 × `verrou_d`, NOT | Mémorise 1 bit au front montant de `clk` |
-| `reg1` | `bascule_d`, AND | Registre 1 bit avec écriture, lecture, activation |
+| `verrou_d` | 4 × NAND, NOT | Mémorise 1 bit tant que `en` = 1, avec mise à 1 et remise à zéro |
+| `bascule_d` | 2 × `verrou_d`, NOT | Mémorise 1 bit au front montant de `clk` (maître-esclave) |
+| `reg1` | `bascule_d`, AND | Registre 1 bit avec écriture et activation |
 | `reg4` | 4 × `reg1` | Registre 4 bits |
 | `reg8` | 2 × `reg4` | Registre 8 bits |
-| `ram16x8` | 16 × `reg8`, `dec4_16`, `mux16_8` | Mémoire de 16 cases de 8 bits |
+| `ram16x8` | 16 × `reg8`, `dec4_16`, `mux16_8` | Mémoire de données, 16 cases de 8 bits |
+| `rom16x8` | 16 constantes, `mux16_8` | Mémoire programme, 16 instructions |
 
-### Compteur
+### Processeur
 
 | Circuit | Construit avec | Rôle |
 |---|---|---|
-| `cpt3_logique` | NOT, AND, OR | Calcule la valeur suivante du compteur |
-| `cpt3_load` | 3 × `bascule_d`, `cpt3_logique` | Compteur 0 → 5 avec chargement |
+| `pc4` | `reg4`, `add4`, `mux2_4` | Compteur ordinal : PC + 1, ou adresse de saut |
+| `etapes` | 2 × `bascule_d`, NOR | Compteur d'étapes T0 → T1 → T2 → T0 |
+| `commande` | `dec4_16`, AND, OR | Unité de commande en logique câblée (voir [controle.md](controle.md)) |
+| `main` | tous les circuits ci-dessus | Le processeur RG-8 complet |
 
-### Affichage
+### Affichage (non utilisés dans le processeur)
 
 | Circuit | Construit avec | Rôle |
 |---|---|---|
@@ -88,9 +101,14 @@ Une flèche `A --> B` signifie : **B est construit avec A**.
 | `seg7_hex` | NOT, AND, OR | Chiffre hexadécimal → afficheur 7 segments |
 | `byte_to_bcd` | ⚠️ diviseur Logisim | Octet → centaines, dizaines, unités (à refaire en portes) |
 
-## Circuits à revoir
+### Anciens circuits
 
 | Circuit | Statut |
 |---|---|
-| `byte_to_bcd` | Utilise encore un composant Logisim, à refaire en portes |
-| `ual1` | N'est plus utilisé, remplacé par `ual8` |
+| `cpt3_logique`, `cpt3_load` | Premier compteur 3 bits, remplacé par `pc4` et `etapes` |
+
+## Une règle à respecter dans Logisim
+
+Dans un bloc dessiné automatiquement par Logisim, l'ordre des entrées de haut en bas suit l'ordre des pins à l'intérieur du sous-circuit. Déplacer une pin au-dessus d'une autre décâble donc tous les circuits qui utilisent ce bloc.
+
+Les blocs `mux4`, `verrou_d`, `reg1`, `ual8`, `ram16x8` et `pc4` ont un dessin fixe (apparence personnalisée) : leurs pins peuvent être déplacées sans rien casser. Si on ajoute ou retire une pin dans l'un d'eux, il faut mettre à jour son dessin.

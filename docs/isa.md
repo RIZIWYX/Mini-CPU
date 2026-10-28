@@ -33,7 +33,9 @@ Chaque instruction tient sur **8 bits** :
 | C | Retenue | Retenue sortante de l'additionneur |
 | V | Dépassement signé | XOR des retenues des bits 6 et 7 |
 
-Les drapeaux sont mis à jour par ADD, SUB, AND, OR et NOT.
+Les drapeaux sont mis à jour **uniquement** par ADD, SUB, AND, OR et NOT. LDA, LDI et STA ne les changent pas : un `JZ` placé après un `LDA` teste le résultat du calcul précédent.
+
+Pour SUB, l'UAL calcule A + (non B) + 1 : C vaut 1 quand il n'y a **pas** d'emprunt (A ≥ B).
 
 ## Instructions
 
