@@ -1,0 +1,14 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  assembleur:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installation de pytest
+        run: pip install pytest
+      - name: Tests de l'assembleur
+        run: python -m pytest -q assembleur/tests

@@ -1,5 +1,10 @@
 # RG-8 : un processeur 8 bits construit porte par porte
 
+[![CI](https://github.com/RIZIWYX/Mini-CPU/actions/workflows/ci.yml/badge.svg)](https://github.com/RIZIWYX/Mini-CPU/actions)
+![Logisim-evolution](https://img.shields.io/badge/Logisim--evolution-3.8%2B-orange)
+![Python](https://img.shields.io/badge/Python-3-blue)
+[![Licence MIT](https://img.shields.io/badge/licence-MIT-green)](LICENSE)
+
 RG-8 est un processeur 8 bits conçu dans [Logisim-evolution](https://github.com/logisim-evolution/logisim-evolution), construit **uniquement à partir de portes logiques** : aucun additionneur, registre, compteur ni mémoire de la bibliothèque Logisim. Les bascules elles-mêmes sont faites en portes NAND.
 
 Il est programmable avec un **assembleur Python** qui écrit le programme directement dans la mémoire du circuit.
@@ -90,7 +95,7 @@ python3 -m pytest -q assembleur/tests
 | `circuits/` | Le processeur et tous ses sous-circuits (`rg8.circ`) |
 | `assembleur/` | Assembleur Python et ses tests |
 | `programmes/` | Programmes d'exemple en assembleur |
-| `docs/` | Jeu d'instructions, architecture, unité de commande, roadmap |
+| `docs/` | Jeu d'instructions, architecture, unité de commande |
 
 ## Auteur
 
