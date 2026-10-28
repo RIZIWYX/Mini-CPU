@@ -59,7 +59,7 @@
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(2800,2430)" name="Clock">
-      <a name="appearance" val="NewPins"/>
+      <a name="appearance" val="classic"/>
     </comp>
     <comp lib="0" loc="(2860,2450)" name="Pin">
       <a name="appearance" val="NewPins"/>
@@ -4014,67 +4014,67 @@
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(630,370)" name="Constant">
-      <a name="value" val="0x25"/>
+      <a name="value" val="0x20"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,390)" name="Constant">
-      <a name="value" val="0x3f"/>
+      <a name="value" val="0x3d"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,410)" name="Constant">
-      <a name="value" val="0x23"/>
+      <a name="value" val="0x27"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,430)" name="Constant">
-      <a name="value" val="0x4f"/>
+      <a name="value" val="0x3e"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,450)" name="Constant">
-      <a name="value" val="0xe0"/>
+      <a name="value" val="0x21"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,470)" name="Constant">
-      <a name="value" val="0xf0"/>
+      <a name="value" val="0x3f"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,490)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x26"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,510)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x4d"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,530)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x3d"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,550)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x1e"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,570)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x5f"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,590)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x3e"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,610)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0xae"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,630)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x96"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,650)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0x1d"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,670)" name="Constant">
-      <a name="value" val="0x0"/>
+      <a name="value" val="0xe0"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(630,690)" name="Pin">
