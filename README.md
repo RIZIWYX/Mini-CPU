@@ -9,8 +9,7 @@ RG-8 est un processeur 8 bits conçu dans [Logisim-evolution](https://github.com
 
 Il est programmable avec un **assembleur Python** qui écrit le programme directement dans la mémoire du circuit.
 
-<!-- Démo : remplacer par le GIF de la multiplication -->
-<!-- ![Multiplication 6 x 7 = 42](docs/demo.gif) -->
+![Démo : assemblage du programme 6 x 7, écriture dans la ROM et tests](docs/demo.gif)
 
 ## Ce qu'il sait faire
 
